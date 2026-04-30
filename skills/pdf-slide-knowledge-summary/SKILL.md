@@ -16,8 +16,10 @@ Default output: Chinese main text, English terms in parentheses, page citations 
 1. Read the project's `CLAUDE.md` (or `AGENTS.md`) first — course directories often have stricter cleanup rules than this skill.
 2. Extract PDF text with `pypdf.PdfReader` → UTF-8 file (never print to terminal).
 3. Run formula extraction pipeline if formulas matter.
-4. Summarize each chapter → merge into final `.md` → run verification pass.
-5. Delete all temporary files and cache folders.
+4. **MUST read [docs/agent/formulas.md](docs/agent/formulas.md) if any math is present** before embedding OCR formulas.
+5. Summarize each chapter → merge into final `.md`.
+6. **MUST run the full checklist in [docs/agent/verification.md](docs/agent/verification.md)** before finalizing.
+7. Delete all temporary files and cache folders.
 
 ## Hard Rules
 
@@ -43,6 +45,7 @@ Default output: Chinese main text, English terms in parentheses, page citations 
 - If a user request conflicts with cleanup rules, put the file in a compliant subfolder and state the path.
 
 ### Formulas
+- **MUST read [docs/agent/formulas.md](docs/agent/formulas.md) before handling any OCR-derived math.** The deep doc covers LaTeX validation rules (`\right.`, bracket escapes, noise detection) that are not repeated here.
 - Two-tier policy: verified core formulas → inline `$...$`; OCR formulas → embed only after syntax + semantic check.
 - No standalone formula appendix. No raw OCR formula lists.
 - In table cells, replace `$|x|$` with `$\lvert x\rvert$` to avoid breaking Markdown tables.
@@ -81,9 +84,7 @@ Full rules: [docs/agent/formulas.md](docs/agent/formulas.md)
 
 ## Verification
 
-Run at least one verification pass before finalizing. Check coverage, citations, formulas, exam usefulness, and rendering hygiene.
-
-Full checklist: [docs/agent/verification.md](docs/agent/verification.md)
+**MUST run the full checklist in [docs/agent/verification.md](docs/agent/verification.md) before finalizing.** The deep doc covers encoding checks, symbol collision detection, and deck deduplication rules that are not summarized here. At minimum, verify coverage, citations, formulas, exam usefulness, and rendering hygiene.
 
 ## Red Flags
 
@@ -97,6 +98,8 @@ Stop and fix before delivery if you see:
 - Markdown tables broken by inline `|` in math.
 - English terms omitted from key concept tables.
 - A summary that lists concepts but lacks typical problem patterns or pitfalls.
+
+**If any flag triggers, re-read the relevant deep doc before fixing.**
 
 ## Deep Docs
 
