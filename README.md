@@ -3,6 +3,7 @@
 中文 | [English](README.en.md)
 
 这是一个 Codex skill，用于从 PDF 版课程幻灯片中创建、扩展和检查考试导向的知识总结，尤其适合由 PowerPoint 导出的中文大学课程 PDF。
+> 经测试Claude Code环境下也可用
 
 ## 功能
 
