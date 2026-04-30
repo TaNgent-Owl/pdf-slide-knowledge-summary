@@ -1,46 +1,51 @@
-# PDF Slide Knowledge Summary
+# PDF 幻灯片知识总结 Skill
 
-A Codex skill for creating, extending, and auditing exam-oriented knowledge summaries from PDF slide decks, especially Chinese university lecture PDFs exported from PowerPoint.
+中文 | [English](README.en.md)
 
-The skill focuses on:
+这是一个 Codex skill，用于从 PDF 版课程幻灯片中创建、扩展和检查考试导向的知识总结，尤其适合由 PowerPoint 导出的中文大学课程 PDF。
 
-- page-cited Markdown study notes
-- Chinese-first summaries with English terminology labels
-- chapter-by-chapter exam points, formulas, concepts, examples, and pitfalls
-- formula handling for PPT-exported PDFs, including OCR caution rules
-- verification loops for coverage, citations, formulas, and Markdown rendering
-- clean workspace rules for course-material directories
+## 功能
 
-## Files
+这个 skill 重点支持：
+
+- 生成带页码引用的 Markdown 复习笔记
+- 中文为主，并为重要概念补充英文术语
+- 按章节整理考点、公式、概念、例题、易错点和考试技巧
+- 处理 PPT 导出 PDF 中常见的公式 OCR 低置信度问题
+- 通过循环检查覆盖范围、页码引用、公式正确性和 Markdown 渲染
+- 维护课程资料目录的清洁，避免临时文件污染根目录
+
+## 文件结构
 
 ```text
 .
 ├── SKILL.md
 ├── agents/
 │   └── openai.yaml
-└── README.md
+├── README.md
+└── README.en.md
 ```
 
-## Use
+## 使用方式
 
-Install or copy this folder into a Codex skills directory, then ask Codex to use `pdf-slide-knowledge-summary` when summarizing or auditing PDF slide summaries.
+将本目录安装或复制到 Codex skills 目录中，然后在总结或审核 PDF 幻灯片知识总结时要求 Codex 使用 `pdf-slide-knowledge-summary`。
 
-Example prompt:
+示例提示词：
 
 ```text
-Use the pdf-slide-knowledge-summary skill to summarize these lecture PDFs into an exam-oriented Markdown knowledge summary with page citations.
+使用 pdf-slide-knowledge-summary skill，将这些课程 PDF 总结成考试导向、带页码引用的 Markdown 知识汇总。
 ```
 
-## Scope
+## 适用范围
 
-This skill is designed for lecture slide PDFs and course review notes. It is not meant for generic article summarization, homework solving, or producing slide decks.
+本 skill 面向课程幻灯片 PDF 和复习笔记整理。它不适合通用论文摘要、作业求解或生成演示文稿。
 
-## Attribution
+## 来源说明
 
-The initial version of `SKILL.md` was derived from and adapted for local course-summary workflows based on:
+`SKILL.md` 的最初版本来源于并改写自以下仓库，以适配本地课程总结流程：
 
 https://github.com/Li-Baichuan-James/summarize-slides-skill
 
-This repository adds project-specific experience from summarizing PDF lecture slides, including UTF-8 extraction precautions on Windows, formula OCR limitations, Markdown table safety checks, and iterative summary auditing rules.
+本仓库在此基础上加入了 PDF 课程幻灯片总结中的项目经验，包括 Windows 上 UTF-8 文本提取注意事项、公式 OCR 局限、Markdown 表格安全检查，以及迭代式总结审核规则。
 
-Subsequent changes in this repository after the initial adaptation are AI-generated.
+初始改写之后，本仓库的后续更改均为 AI 生成。
