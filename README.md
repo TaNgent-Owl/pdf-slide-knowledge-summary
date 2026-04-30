@@ -2,7 +2,7 @@
 
 中文 | [English](README.en.md)
 
-从 PDF 版课程幻灯片中创建、扩展、检查考试导向知识总结的 skill，适合由 PowerPoint 导出的中文大学课程 PDF。经测试 Claude Code 环境下也可用。
+从 PDF 版课程幻灯片中创建、扩展、检查考试导向知识总结的 skill，适合由 PowerPoint 导出的中文大学课程 PDF。
 
 ## 功能
 
