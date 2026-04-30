@@ -1,0 +1,4 @@
+interface:
+  display_name: "PDF Slide Knowledge Summary"
+  short_description: "Summarize PDF slide decks into source-cited study notes."
+  default_prompt: "Use this skill to summarize PDF slide decks into exam-oriented, page-cited knowledge notes with formulas and verification."
