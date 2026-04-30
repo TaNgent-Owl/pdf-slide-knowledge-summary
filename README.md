@@ -19,16 +19,32 @@
 
 ```text
 .
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
 ├── README.md
-└── README.en.md
+├── README.en.md
+└── skills/
+    └── pdf-slide-knowledge-summary/
+        ├── SKILL.md
+        └── agents/
+            └── openai.yaml
 ```
 
 ## 使用方式
 
-将本目录安装或复制到 Codex skills 目录中，然后在总结或审核 PDF 幻灯片知识总结时要求 Codex 使用 `pdf-slide-knowledge-summary`。
+### cc switch
+
+在 cc switch 中添加自定义仓库时，使用：
+
+```text
+Repository: TaNgent-Owl/pdf-slide-knowledge-summary
+Branch: main
+Subdirectory: skills
+```
+
+这里必须填写 `Subdirectory: skills`。本仓库按“一个仓库可包含多个 skill”的结构组织，实际 skill 位于 `skills/pdf-slide-knowledge-summary/`。
+
+### 手动安装
+
+也可以将 `skills/pdf-slide-knowledge-summary/` 复制到 Codex skills 目录中，然后在总结或审核 PDF 幻灯片知识总结时要求 Codex 使用 `pdf-slide-knowledge-summary`。
 
 示例提示词：
 

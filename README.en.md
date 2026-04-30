@@ -19,16 +19,32 @@ This skill focuses on:
 
 ```text
 .
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
 ├── README.md
-└── README.en.md
+├── README.en.md
+└── skills/
+    └── pdf-slide-knowledge-summary/
+        ├── SKILL.md
+        └── agents/
+            └── openai.yaml
 ```
 
 ## Use
 
-Install or copy this folder into a Codex skills directory, then ask Codex to use `pdf-slide-knowledge-summary` when summarizing or auditing PDF slide summaries.
+### cc switch
+
+When adding this as a custom repository in cc switch, use:
+
+```text
+Repository: TaNgent-Owl/pdf-slide-knowledge-summary
+Branch: main
+Subdirectory: skills
+```
+
+`Subdirectory: skills` is required. This repository uses a multi-skill repository layout, and the actual skill lives at `skills/pdf-slide-knowledge-summary/`.
+
+### Manual install
+
+You can also copy `skills/pdf-slide-knowledge-summary/` into a Codex skills directory, then ask Codex to use `pdf-slide-knowledge-summary` when summarizing or auditing PDF slide summaries.
 
 Example prompt:
 
