@@ -42,3 +42,5 @@ The initial version of `SKILL.md` was derived from and adapted for local course-
 https://github.com/Li-Baichuan-James/summarize-slides-skill
 
 This repository adds project-specific experience from summarizing PDF lecture slides, including UTF-8 extraction precautions on Windows, formula OCR limitations, Markdown table safety checks, and iterative summary auditing rules.
+
+Subsequent changes in this repository after the initial adaptation are AI-generated.
