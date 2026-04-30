@@ -1,21 +1,20 @@
-# PDF Slide Knowledge Summary Skill
+# PDF Slide Knowledge Summary
 
 [中文](README.md) | English
 
-This is a Codex skill for creating, extending, and auditing exam-oriented knowledge summaries from PDF slide decks, especially Chinese university lecture PDFs exported from PowerPoint.
+A skill for creating, extending, and auditing exam-oriented knowledge summaries from PDF slide decks, especially Chinese university lecture PDFs exported from PowerPoint.
 
 ## Features
 
-This skill focuses on:
+- Generates page-cited Markdown study notes
+- Chinese-first summaries with English terminology labels
+- Organizes exam points, formulas, concepts, examples, pitfalls, and exam techniques by chapter
+- Two-tier formula policy: human-verified formulas as inline LaTeX, uncertain OCR formulas as screenshots
+- Structured verification loop covering coverage, citations, formulas, and rendering
+- Keeps course directories clean — root limited to PDFs, instructions, and final summary
+- Supports PPTX input via PDF conversion
 
-- generating page-cited Markdown study notes
-- writing Chinese-first summaries with English terminology labels
-- organizing exam points, formulas, concepts, examples, pitfalls, and exam techniques by chapter
-- handling low-confidence formula OCR issues common in PPT-exported PDFs
-- checking coverage, page citations, formula correctness, and Markdown rendering in iterative review loops
-- keeping course-material directories clean and avoiding temporary-file clutter in the root directory
-
-## Files
+## File Structure
 
 ```text
 .
@@ -23,10 +22,27 @@ This skill focuses on:
 ├── README.en.md
 └── skills/
     └── pdf-slide-knowledge-summary/
-        ├── SKILL.md
-        └── agents/
-            └── openai.yaml
+        ├── SKILL.md              # Skill entry point (read first)
+        ├── agents/
+        │   └── openai.yaml
+        └── docs/
+            └── agent/
+                ├── formulas.md      # Formula detection, OCR, LaTeX validation
+                ├── verification.md  # Verification loop & audit checklist
+                ├── workflows.md     # New PDF intake, extraction, parallel strategy
+                └── history.md       # Lessons from past audit iterations
 ```
+
+## Environment Notes
+
+Several technical constraints are specific to a **Windows 11 + Python 3.14** environment:
+
+- `python` not `python3` — on Windows, `python3` may be a Microsoft Store stub
+- Terminal default GBK encoding → always write UTF-8 files, never `print()` Chinese PDF text to terminal
+- `pypdf` is more compatible than `pdfplumber` on Python 3.14 / Windows
+- Formula OCR pipeline requires Conda Python 3.12 (pix2tex C extensions fail on 3.14)
+
+Other constraints (directory cleanliness, formula policy, verification workflow) apply to all platforms.
 
 ## Use
 
@@ -40,11 +56,11 @@ Branch: main
 Subdirectory: skills
 ```
 
-`Subdirectory: skills` is required. This repository uses a multi-skill repository layout, and the actual skill lives at `skills/pdf-slide-knowledge-summary/`.
+`Subdirectory: skills` is required. This repository uses a multi-skill layout — the actual skill lives at `skills/pdf-slide-knowledge-summary/`.
 
 ### Manual install
 
-You can also copy `skills/pdf-slide-knowledge-summary/` into a Codex skills directory, then ask Codex to use `pdf-slide-knowledge-summary` when summarizing or auditing PDF slide summaries.
+Copy `skills/pdf-slide-knowledge-summary/` into a skills directory, then invoke `pdf-slide-knowledge-summary` when summarizing or auditing PDF slide decks.
 
 Example prompt:
 
@@ -54,14 +70,14 @@ Use the pdf-slide-knowledge-summary skill to summarize these lecture PDFs into a
 
 ## Scope
 
-This skill is designed for lecture slide PDFs and course review notes. It is not meant for generic article summarization, homework solving, or producing slide decks.
+Designed for lecture slide PDFs and course review notes. Not meant for generic article summarization, homework solving, or producing slide decks.
 
 ## Attribution
 
-The initial version of `SKILL.md` was derived from and adapted for local course-summary workflows based on:
+The initial version of `SKILL.md` was adapted from:
 
 https://github.com/Li-Baichuan-James/summarize-slides-skill
 
-This repository adds project-specific experience from summarizing PDF lecture slides, including UTF-8 extraction precautions on Windows, formula OCR limitations, Markdown table safety checks, and iterative summary auditing rules.
+This repository adds practical experience from summarizing PDF lecture slides, including Windows UTF-8 extraction precautions, formula OCR limitations and LaTeX validation, Markdown table safety checks, and iterative auditing rules.
 
-Subsequent changes in this repository after the initial adaptation are AI-generated.
+Subsequent changes after the initial adaptation are AI-generated.
